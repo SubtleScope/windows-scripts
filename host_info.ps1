@@ -15,7 +15,7 @@ Write-Host "=========== System Hostname ==========="
 Write-Host $getSysInfo.Name
 $getSysDomain = ""
 
-if ($getSysInfo.PartOfDomain == True) {
+if ($getSysInfo.PartOfDomain -eq $true) {
    Write-Host "=========== System Domainname ==========="
    Write-Host $getSysInfo.Domain
 } else {
@@ -44,7 +44,8 @@ Get-ItemProperty "HKLM:\Software\Microsoft\Windows\CurrentVersion\Run"
 Write-Host "=========== Reg HKLM: Run Once  ==========="
 Get-ItemProperty "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce"
 Write-Host "=========== Reg HKLM: Run Once EX ==========="
-Get-ItemProperty "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnceEx"
+# Windows Vista, Windows Server 2008, Windows 7 and Windows Server 2008 R2. the RunOnceEx registry key does not exist by default
+Get-ItemProperty -ea SilentlyContinue "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnceEx"
 Write-Host "=========== Reg HKCU: Run ==========="
 Get-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run"
 Write-Host "=========== Reg HKCU: Run Once ==========="
