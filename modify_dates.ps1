@@ -23,7 +23,7 @@ function Invoke-ModifyDates {
 
       Friday, January 28, 2000 5:20:12 PM
 
-      PS C:\> (gci Get-Finger.ps1).LastAccessTime
+      PS C:\> (gci Get-Test.ps1).LastAccessTime
 
       Monday, January 17, 2000 1:36:23 AM
   #>
